@@ -4,8 +4,13 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace ClubeDoLivro.ConsoleApp.ModuloAmigos
 {
+    
+
     public class TelaAmigos
     {
+        string Nome;
+        string Telefone;
+        string NomeResponsavel;
 
         public RepositorioAmigo repositorioAmigo;
 
@@ -30,9 +35,11 @@ namespace ClubeDoLivro.ConsoleApp.ModuloAmigos
         {
             Amigo novoAmigo = ObterDadosAmigo();
 
+            string erros = novoAmigo.Validar();
+
             repositorioAmigo.CadastrarAmigo(novoAmigo);
 
-            Console.WriteLine("Amigo editado com sucesso");
+            Console.WriteLine("Amigo adicionado com sucesso");
 
         }
         public Amigo ObterDadosAmigo()
@@ -54,13 +61,15 @@ namespace ClubeDoLivro.ConsoleApp.ModuloAmigos
         public void EditarAmigo()
         {
 
-            Console.Write("Digite o Nome do Amigo que deseja editar: ");
-            string nome = (Console.ReadLine()!);
-
-
-
-
-            }
+            Console.Write("Digite o Id do Amigo que deseja editar: ");
+            string Id = (Console.ReadLine()!);
+        }
+        public void VerAmigos()
+        {
+            Console.WriteLine($"Nome:{Nome}");
+            Console.WriteLine($"Telefone:{Telefone}");
+            Console.WriteLine($"Nome do responsavel:{NomeResponsavel}");
         }
     }
+}
 
